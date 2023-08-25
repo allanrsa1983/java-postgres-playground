@@ -1,6 +1,10 @@
 package com.example;
 
 import java.sql.Statement;
+
+import com.example.model.Marca;
+import com.example.model.Produto;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -91,22 +95,47 @@ private static void listarEstados() {
 
 
     } 
+    private static void buscarProduto(Produto p) {
+        var sql = "select * from produto where id = ?"; 
+        try {
+            var conn = getConnection();
+            var statement = conn.prepareStatement(sql);
+            statement.setLong(1, p.getId());
+            System.out.println(p.getId());
+  
+            var result = statement.executeQuery();
+            while (result.next()){
+                System.out.printf("ID: %d - NOME: %s - MARCA_ID: %d - VALOR: %f \n", result.getInt("id"), result.getString("nome"), result.getInt("marca_id"), result.getDouble("valor") );
+            }
+            System.out.println("Busca deu certo!");
+
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
     public static void main(String[] args) {
         carregarDriverJDBC(); 
         //listarEstados();     
         //buscarEstadoPorUF("PE");
 
         Marca m = new Marca();
-        m.setMarca_id(1L);
+        m.setMarca_id(1);
 
         Produto p = new Produto();
         p.setMarca(m);
         p.setNome("Meu novo produto");
         p.setPreco(62.50);
-
         inserirProduto(p);
+        
+        p.setId(206);
+
+        buscarProduto(p); 
             
+   
     }
+
+
 
     
         

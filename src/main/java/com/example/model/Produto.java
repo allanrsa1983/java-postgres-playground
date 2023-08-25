@@ -1,32 +1,32 @@
 
-package com.example;
+package com.example.model;
 
 public class Produto {
     
-    private Long id;
+    private int id;
     private String nome;
     private Marca marca;
     private double preco;
     
-    public Produto(Long id, String nome, Marca marca, double preço) {
-        this.id = id;
-        this.nome = nome;
-        this.marca = marca;
-        this.preco = preco;
+    public Produto(int id, String nome, Marca marca, double preco) {
+        this.setId(id);
+        this.setNome(nome);
+        this.setMarca(marca);
+        this.setPreco(preco);
     }
 
     public Produto () {
-        this.setId(0L);
+        this.setId(0);
         this.setNome("ÏNDEFINIDO");
         this.setMarca(new Marca());
         this.setPreco(0.00);
     }
 
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
     public String getNome() {
@@ -48,7 +48,14 @@ public class Produto {
         this.preco = preco;
     } 
 
+    public String toString() {
+        String retorno = "";
 
+        retorno = "ID: "+ this.getId() + " - " + "NOME: "+ this.getNome() + " - " 
+                        + "MARCA: "+this.getMarca().getMarca_id()+ " - " + "PREÇO: "+ this.getPreco(); 
+
+        return retorno; 
+    }
 
 
 }

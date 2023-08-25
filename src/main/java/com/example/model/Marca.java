@@ -1,24 +1,24 @@
-package com.example;
+package com.example.model;
 
 public class Marca {
-    private Long marca_id;
+    private int marca_id;
     private String nome_marca;
     
     
     
-    public Marca(Long marca_id, String nome_marca) {
+    public Marca(int marca_id, String nome_marca) {
         this.marca_id = marca_id;
         this.nome_marca = nome_marca;       
     }
 
     public Marca () {
-        this.setMarca_id(0L);
+        this.setMarca_id(0);
         this.setNome_marca("");
     }
-    public Long getMarca_id() {
+    public int getMarca_id() {
         return marca_id;
     }
-    public void setMarca_id(Long marca_id) {
+    public void setMarca_id(int marca_id) {
         this.marca_id = marca_id;
     }
     
